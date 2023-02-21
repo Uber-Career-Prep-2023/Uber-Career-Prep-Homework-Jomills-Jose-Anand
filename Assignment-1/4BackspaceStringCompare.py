@@ -27,13 +27,12 @@ def backspace_string_process(input_string):
 
         # Otherwise we keep the string up until the index, the ith character, and the rest of the string
         else:
-            if backspace_index > 0:
-                input_string = (
-                    input_string[:backspace_index]
-                    + input_string[i]
-                    + input_string[backspace_index:]
-                )
-                backspace_index += 1
+            input_string = (
+                input_string[:backspace_index]
+                + input_string[i]
+                + input_string[backspace_index + 1 :]
+            )
+            backspace_index += 1
 
     # Return the final string
     return input_string[:backspace_index]
@@ -63,10 +62,10 @@ print(backspace_string_compare("abcdef###xyz", "abcw#xyz"))  # Output: True
 print(backspace_string_compare("abcdef###xyz", "abcdefxyz###"))  # Output: False
 
 # * Test case 5
-print(backspace_string_compare("", "u#"))  # Output: False
+print(backspace_string_compare("", "u#"))  # Output: True
 
 # * Test case 6
-print(backspace_string_compare("abcxyz###def", "abcdefxyz###"))  # Output: False
+print(backspace_string_compare("abcxyz###def", "abcdefxyz###"))  # Output: True
 
 # * Test case 7
 print(backspace_string_compare("Great#####", "###"))  # Output: False
